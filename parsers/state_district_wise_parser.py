@@ -1,5 +1,6 @@
 import requests
-import model as m
+import parsers.model as m
+
 dataset = m.initialize()
 
 unique_dates = list()

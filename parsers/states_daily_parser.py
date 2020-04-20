@@ -1,5 +1,5 @@
 import requests
-import model as m
+import parsers.model as m
 import pandas as pd
 
 dataset = m.initialize()

@@ -1,0 +1,97 @@
+#:kivy 1.11.1
+
+<WindowManager>:
+
+    InputWindow:
+
+    OutputWindow:
+
+
+<InputWindow>:
+
+    name: 'input'
+
+    date_to_fetch: date
+    state_code: state
+
+    GridLayout:
+        cols: 1
+        size: root.width, root.height
+
+        GridLayout:
+            cols: 2
+
+            Label: 
+                text: 'Enter the date: '
+                font_size: 18
+
+            TextInput:  
+                id: date
+                multiline: False
+                font_size: 18
+
+            Label:
+                text: 'Enter the state code: '
+                font_size: 18
+
+            TextInput:
+                id: state
+                multiline: False
+                font_size: 18
+
+        Button:
+            text: 'Show data'
+            font_size: 18
+            on_release:
+                app.root.current = 'output'
+                root.manager.transition.direction = 'left'
+                root.fetch_data()
+            
+
+<OutputWindow>:
+
+    name: 'output'
+
+    confirmed: cnf
+    recovered: rcv
+    deceased: dcs
+
+    GridLayout:
+        cols: 1
+        size: root.width, root.height
+
+        GridLayout:
+            cols: 3
+
+            Label:
+                text: 'Confirmed'
+                font_size: 18
+
+            Label:
+                text: 'Recovered'
+                font_size: 18
+
+            Label:
+                text: 'Deceased'
+                font_size: 18
+
+            Label:
+                id: cnf
+                text: ''
+                font_size: 18
+
+            Label:
+                id: rcv
+                text: ''
+                font_size: 18
+
+            Label:
+                id: dcs
+                text: ''
+                font_size: 18
+
+        Button:
+            text: 'Go back'
+            on_release:
+                app.root.current = 'input'
+                root.manager.transition.direction = 'right'
